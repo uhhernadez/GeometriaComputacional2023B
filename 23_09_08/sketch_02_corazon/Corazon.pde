@@ -59,4 +59,11 @@ class Corazon {
     y = M[1][0] * v.x + M[1][1] * v.y;
     return new PVector(x, y);
   } 
+  
+  void Scale (float alpha) {
+    for (PVector p : points) {
+      PVector np = new PVector (alpha * p.x, alpha * p.y);
+      p.set(np);
+    }
+  }
 }

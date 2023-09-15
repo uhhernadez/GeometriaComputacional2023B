@@ -51,6 +51,5 @@ class Triangle {
     x = M[0][0] * v.x + M[0][1] * v.y;
     y = M[1][0] * v.x + M[1][1] * v.y;
     return new PVector(x, y);
-  }
-  
+  } 
 }
