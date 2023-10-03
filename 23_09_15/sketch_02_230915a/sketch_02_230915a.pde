@@ -14,9 +14,6 @@ void setup () {
 }
 
 void draw () {
-  for (int m = 0; m < 6; m++ ) {
-    for (int n = 0; n < 6; n++) {
-      tiles[m][n].Draw();
-    }  
-  }
+  background(245,127,120);
+
 }
