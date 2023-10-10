@@ -18,42 +18,81 @@ void draw () {
   background(255);
   translate(300, 300);
   ArrayList<PVector> pCube = new ArrayList<PVector>();
-  ArrayList<PVector> cubeRy = new ArrayList<PVector>();
+  ArrayList<PVector> cubeR = new ArrayList<PVector>();
   float [][] orto = {
     {1, 0, 0},
     {0, 1, 0},
     {0, 0, 0}
   };
   
+  float d = 50;
+  float [][] perspective = {
+    {1, 0, 0},
+    {0, 1, 0},
+    {0, 0, 1/d}
+  };
+  
   float theta = -radians(0.2*millis());
   
-  float [][] Ry = {
-    {cos(theta) , 0, sin (theta)},
-    {0          , 1, 0          },
-    {-sin(theta), 0, cos (theta)}
-  }; 
+  cubeR = RotationZ(cube, theta);
+  for (PVector p: cubeR) {
+    p.add(new PVector(40,0, -100));
+  }
+ 
+  for (PVector v : cubeR) {
+    // Se realiza la proyección
+    PVector nv = Mult3x3byV(perspective,v);
+    nv.div(nv.z);
+    pCube.add(nv);
+  }
   
+  
+  DrawCube(pCube);
+}
+
+ArrayList<PVector> RotationX(ArrayList<PVector> points, float theta) {
+  ArrayList<PVector> newPoints = new ArrayList<PVector>();
   float [][] Rx = {
     {1,       0,          0     },
     {0, cos (theta), -sin(theta)},
     {0, sin (theta),  cos(theta)}
   };
   
+  for (PVector v: points) {
+    // Rotación sobe el eje x
+    newPoints.add(Mult3x3byV(Rx, v));
+  }
+  return newPoints;
+}
+
+ArrayList<PVector> RotationY(ArrayList<PVector> points, float theta) {
+  ArrayList<PVector> newPoints = new ArrayList<PVector>();
+  float [][] Ry = {
+    {cos(theta) , 0, sin (theta)},
+    {0          , 1, 0          },
+    {-sin(theta), 0, cos (theta)}
+  };
+  
+  for (PVector v: points) {
+    // Rotación sobe el eje x
+    newPoints.add(Mult3x3byV(Ry, v));
+  }
+  return newPoints;
+}
+
+ArrayList<PVector> RotationZ(ArrayList<PVector> points, float theta) {
+  ArrayList<PVector> newPoints = new ArrayList<PVector>();
   float [][] Rz = {
     {cos(theta), -sin (theta), 0},
     {sin(theta), cos(theta)  , 0},
     {0         ,            0, 1}
   };
   
-  for (PVector v: cube) {
-    // Rotación sobe el eje y
-    cubeRy.add(Mult3x3byV(Rz, v));
+  for (PVector v: points) {
+    // Rotación sobe el eje x
+    newPoints.add(Mult3x3byV(Rz, v));
   }
-  for (PVector v : cubeRy) {
-    // Se realiza la proyección
-    pCube.add(Mult3x3byV(orto,v));
-  }
-  DrawCube(pCube);
+  return newPoints;
 }
 
 void Line (PVector a, PVector b) {
