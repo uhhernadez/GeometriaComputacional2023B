@@ -8,6 +8,7 @@ void setup () {
 
 void draw () {
   background(0);
+  lights();
   float l = 100;
   float t = millis () / 1000.0;
   float f = 0.01;

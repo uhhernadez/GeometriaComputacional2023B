@@ -20,5 +20,6 @@ class Gizmo {
     stroke(0,0,255);
     line(0,0,0, 0, 0,l/*z*/);
     stroke(0);
+    strokeWeight(1);
   }
 }
