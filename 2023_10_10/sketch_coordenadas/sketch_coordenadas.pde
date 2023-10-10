@@ -1,9 +1,11 @@
 Gizmo gizmo;
 Grid grid;
+Piece arm;
 void setup () {
   size (500, 500, P3D);
   gizmo = new Gizmo (4, 50);
   grid = new Grid();
+  arm = new Piece (0, 0, -20, 10, 10, 40 );
 }
 
 void draw () {
@@ -19,5 +21,15 @@ void draw () {
           0, 0, -1); // Camera view
   grid.Draw();
   gizmo.Draw();
-  box(20);
+  arm.theta = radians(45) * cos(2*PI*t);
+  pushMatrix();
+  translate(20, 20, 0);
+  arm.Draw();
+  popMatrix();
+  arm.theta = radians(45) * sin(2*PI*t);
+  pushMatrix();
+  translate(10, 20, 0);
+  arm.Draw();
+  popMatrix();
+ 
 }
