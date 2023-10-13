@@ -16,6 +16,16 @@ class Enderman {
   }
   
   void Draw() {
+    float t = millis () / 1000.0;
+    float f = 1;
+    leg_right.theta.x = radians(45) * cos(2*PI*f*t);
+    leg_left.theta.x = -radians(45) * cos(2*PI*f*t);
+    
+    arm_right.theta.x = -radians(90) * cos(2*PI*f*t);
+    arm_left.theta.x = radians(90) * cos(2*PI*f*t);
+  
+    head.theta.z = radians(10) * cos(2*PI*1.5*t+PI);
+    
     pushMatrix();
       pushMatrix();
         translate(-10, 0, 100);
@@ -36,8 +46,6 @@ class Enderman {
         translate(0, 0, 142.5);
         head.Draw();
       popMatrix();
-  
-      //head.theta.z = radians(10) * cos(2*PI*1.5*t+PI);
   
       pushMatrix();
         translate(-22.5, 0, 142.5);
