@@ -1,6 +1,6 @@
 class Piece {
   Gizmo gizmo;
-  float theta;
+  PVector theta;
   PVector offset;
   float w, h, d;
   
@@ -10,10 +10,13 @@ class Piece {
     this.w = w;
     this.h = h;
     this.d = d;
+    theta  = new PVector();
   }
   void Draw () {
     pushMatrix();
-      rotateX(theta);
+      rotateX(theta.x);
+      rotateY(theta.y);
+      rotateZ(theta.z);
       gizmo.Draw();
       translate(offset.x, offset.y, offset.z);
       box(w, h, d);
