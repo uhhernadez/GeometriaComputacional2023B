@@ -1,12 +1,25 @@
 Gizmo gizmo;
 Grid grid;
-Enderman fakeEnderman;
+ArrayList<Enderman> army;
 
 void setup () {
   size (500, 500, P3D);
   gizmo = new Gizmo (4, 50);
   grid = new Grid();
-  fakeEnderman = new Enderman();
+  
+  army = new ArrayList<Enderman> ();
+  
+  int N = 10;
+  for (int k = 0; k < N; k++) {
+    float x = random(-100, 100);
+    float y = random(-100, 100);
+    float theta_z = random(-PI, PI);
+    Enderman e = new Enderman();
+    e.position.set(x, y, 0);
+    e.theta.set(0,0,theta_z);
+    army.add(e);
+  }
+  
 }
 
 void draw () {
@@ -24,7 +37,4 @@ void draw () {
   grid.Draw();
   gizmo.Draw();
  
-  fakeEnderman.Draw();
-  PVector next = PVector.random3D();
-  fakeEnderman.position.add(10*next.x,10*next.y,0);
 }
