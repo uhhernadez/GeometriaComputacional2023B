@@ -7,18 +7,24 @@ void setup () {
   gizmo = new Gizmo (4, 50);
   grid = new Grid();
   particle = loadImage("particula.png");
+ // particle.resize(10,10);
 }
 
 void draw () {
   background(0);
   lights();
   float fov = PI/3.0;
-  perspective(fov, float(width)/float(height), 5, 500);
-  //camera(0, 30, 30, 
-  camera(15, 15, 10, 
+  perspective(fov, float(width)/float(height), 5, 500); 
+  camera(50, 50, 50, 
            0,    0,  0, 
            0,    0, -1);
   gizmo.Draw();
   grid.Draw();
-  image(particle,0,0);
+  pushMatrix();
+    rotateX(radians(90));
+    pushMatrix();
+      translate(0,frameCount*.2,0);
+      image(particle,0,0);
+    popMatrix();
+  popMatrix();
 }
