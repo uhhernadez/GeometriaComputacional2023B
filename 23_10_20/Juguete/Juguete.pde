@@ -3,7 +3,6 @@ PShape toy;
 Gizmo gizmo;
 Grid grid;
 
-
 void setup() {
   size(500, 500,P3D);
   gizmo = new Gizmo (4, 50);
@@ -20,23 +19,39 @@ void setup() {
 void draw() {
   background(0);
   lights();
-  
-  camera(0, 50, 30, 
+  float fov = PI/3.0;
+  perspective(fov, float(width)/float(height), 5, 500);
+  //camera(0, 30, 30, 
+  camera(15, 15, 10, 
            0,    0,  0, 
            0,    0, -1);
-  gizmo.Draw();
-  grid.Draw();
+  //gizmo.Draw();
+  //grid.Draw();
   pushMatrix();
-    translate(0,-30,0);
+  scale(1,-1,1);
+  rotateX(radians(90));
+  
+  pushMatrix();
+    translate(-3,-30,-6);
     shape(base);
   popMatrix();
+  float z = 1.3;
   pushMatrix();
-    translate(0,0,0);
+    translate(1.6,0,z);
     shape(brick1);
   popMatrix();
   pushMatrix();
-    translate(4,0,0);
+    translate(4,0,z);
     shape(brick2);
+  popMatrix();
+  pushMatrix();
+    translate(7,0,z+.3);
+    shape(brick3);
   popMatrix(); 
- 
+  pushMatrix();
+    translate(10,0,z);
+    shape(brick4);
+  popMatrix();
+  
+  popMatrix();
 }
