@@ -1,5 +1,6 @@
 class Particle {
-  PImage img;
+  //PImage img;
+  PShape shape;
   float w, h;
   PVector position;
   PVector orientation;
@@ -10,7 +11,8 @@ class Particle {
   Particle (float x, float y, float z) {
     position = new PVector(x, y, z);
     orientation = new PVector(radians(90),0,0);
-    img = loadImage("particula.png");
+    //img = loadImage("particula.png");
+    shape = loadShape("flower.svg");
     hmax = 200;
     hmin = 0;
     wmax = 200;
@@ -20,8 +22,10 @@ class Particle {
   
   Particle () {
     position = new PVector();
-    orientation = new PVector(radians(90),0,0);
-    img = loadImage("particula.png");
+    orientation = new PVector(radians(90),0,PI);
+    //img = loadImage("particula.png");
+    //shape = loadShape("flower.svg");
+    shape = loadShape("heart.svg");
     hmax = 200;
     hmin = 0;
     wmax = 50;
@@ -36,7 +40,9 @@ class Particle {
          rotateX(orientation.x);
          rotateY(orientation.y);
          rotateZ(orientation.z);
-         image(img, 0, 0);
+         //image(img, 0, 0);
+         scale(0.01);
+         shape(shape, 0, 0);
        popMatrix();
      popMatrix();
      position.add(0,0,v);

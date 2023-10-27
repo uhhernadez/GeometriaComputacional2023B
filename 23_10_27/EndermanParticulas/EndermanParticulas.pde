@@ -17,7 +17,7 @@ void setup () {
 
 void draw () {
   background(0);
-  lights();
+  //lights();
   float fov = PI/3.0;
   float r  = 200;
   float t = millis()/1000.0;
