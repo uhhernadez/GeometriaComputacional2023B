@@ -1,18 +1,14 @@
 Gizmo gizmo;
 Grid grid;
 Particle particle;
-ArrayList<Particle> particles;
+Enderman enderman;
 
 void setup () {
   size(500, 500,P3D);
   //size(500, 500);
   gizmo = new Gizmo (4, 50);
   grid = new Grid();  
-  particles = new ArrayList<Particle>();
-  
-  for (int k = 0; k < 100; k++) {
-    particles.add(new Particle());
-  }
+  enderman = new Enderman();
 }
 
 void draw () {
@@ -28,7 +24,5 @@ void draw () {
            0,    0, -1);
   gizmo.Draw();
   grid.Draw();
-  for (Particle p:particles) {
-    p.Draw();
-  }
+  enderman.Draw();
 }
