@@ -22,12 +22,13 @@ class Enderman {
     
     particles = new ArrayList<Particle>();
   
-    for (int k = 0; k < 100; k++) {
+    for (int k = 0; k < 10; k++) {
       particles.add(new Particle());
     }
   }
   
   void Draw() {
+    fill(50);
     float t = millis () / 1000.0;
     float f = 1;
     leg_right.theta.x = radians(45) * cos(2*PI*f*t);
@@ -41,6 +42,7 @@ class Enderman {
     
     pushMatrix();
       pushMatrix();
+      translate(position.x, position.y, position.z);
         for (Particle p:particles) {
           p.Draw();
         }

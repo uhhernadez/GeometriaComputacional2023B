@@ -17,7 +17,7 @@ class Piece {
       rotateX(theta.x);
       rotateY(theta.y);
       rotateZ(theta.z);
-      gizmo.Draw();
+      //gizmo.Draw();
       translate(offset.x, offset.y, offset.z);
       box(w, h, d);
     popMatrix();

@@ -26,6 +26,10 @@ class Particle {
     //img = loadImage("particula.png");
     //shape = loadShape("flower.svg");
     shape = loadShape("heart.svg");
+    //shape = loadShape("diamond.svg");
+    //shape = loadShape("butterfly.svg");
+    //shape = loadShape("fire.svg");
+    //shape = loadShape("particula.svg");
     hmax = 200;
     hmin = 0;
     wmax = 50;
@@ -41,7 +45,9 @@ class Particle {
          rotateY(orientation.y);
          rotateZ(orientation.z);
          //image(img, 0, 0);
-         scale(0.01);
+         float s = random(0.01, 0.02);
+         s = 0.08;
+         scale(s);
          shape(shape, 0, 0);
        popMatrix();
      popMatrix();
