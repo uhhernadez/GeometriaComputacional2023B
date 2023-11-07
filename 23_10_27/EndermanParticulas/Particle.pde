@@ -46,7 +46,7 @@ class Particle {
          rotateZ(orientation.z);
          //image(img, 0, 0);
          float s = random(0.01, 0.02);
-         s = 0.08;
+         s = 0.02;
          scale(s);
          shape(shape, 0, 0);
        popMatrix();
