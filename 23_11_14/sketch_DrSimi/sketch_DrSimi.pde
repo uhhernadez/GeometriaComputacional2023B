@@ -1,3 +1,6 @@
+import processing.sound.*;
+SoundFile file;
+
 Pieza manoIzq;
 Pieza manoDer;
 Pieza brazoIzq;
@@ -6,6 +9,8 @@ Pieza tronco;
 Pieza cabeza;
 Pieza piernaIzq;
 Pieza piernaDer;
+
+
 
 void setup () {
   size(512, 512);
@@ -17,6 +22,9 @@ void setup () {
   cabeza = new Pieza ("cabeza.png",-72, -126);
   piernaIzq = new Pieza ("pierna_izq.png", -40, 0);
   piernaDer = new Pieza ("pierna_der.png", -60, 0);
+  //file = new SoundFile(this, "Arremangala.wav");
+  file = new SoundFile(this, "jamaicaColombiana.mp3");
+  file.play();
 }
 
 void draw () {
@@ -31,6 +39,7 @@ void draw () {
        
     pushMatrix();
       translate(45,60);
+      rotate(radians(90*cos(2*PI*t*1)));
       piernaIzq.Draw();
     popMatrix();
   
@@ -65,6 +74,7 @@ void draw () {
     
     pushMatrix();
       translate(0,-65);
+      rotate(radians(10*cos(2*PI*t*2)));
       cabeza.Draw();
     popMatrix();
     
