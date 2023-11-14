@@ -10,7 +10,7 @@ class Pieza {
   void Draw () {
     pushMatrix();
       image(img,pivote.x, pivote.y);
-      circle(0,0, 10);
+      //circle(0,0, 10);
     popMatrix();
   }
   

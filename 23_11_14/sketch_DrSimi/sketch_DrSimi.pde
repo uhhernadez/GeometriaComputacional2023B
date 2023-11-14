@@ -24,49 +24,51 @@ void draw () {
   float t = millis()/1000.0;
   translate(width/2.0,height/2.0);
   
-  pushMatrix();
-    translate(45,30);
-    piernaIzq.Draw();
-  popMatrix();
   
   pushMatrix();
-    translate(-45,30);
-    piernaDer.Draw();
-  popMatrix();
+    translate(0,-35 + 20*cos(2*PI*t*2));
+    //translate(0,-35);
+       
+    pushMatrix();
+      translate(45,60);
+      piernaIzq.Draw();
+    popMatrix();
   
-  pushMatrix();
-    translate(0,-35);
+    pushMatrix();
+      translate(-45,60);
+      piernaDer.Draw();
+    popMatrix();
+    
     tronco.Draw();
-  popMatrix();
-  
-  pushMatrix();
-    translate(0,-110);
-    cabeza.Draw();
-  popMatrix();
-  
-  
-  
-  
-  pushMatrix();
-    translate(-65,-100);
-    //rotate(t);
-    brazoDer.Draw();
+   
     pushMatrix();
-      translate(-45,-55);
-      //rotate(t);
-      manoDer.Draw();
+      translate(-65,-65);
+      rotate(radians(20*cos(2*PI*t)));
+      brazoDer.Draw();
+      pushMatrix();
+        translate(-45,-55);
+        rotate(radians(60*cos(2*PI*t)+50));
+        manoDer.Draw();
+      popMatrix();
     popMatrix();
-  popMatrix();
   
-  
-  pushMatrix();
-    translate(63,-100);
-    //rotate(t);
-    brazoIzq.Draw();
     pushMatrix();
-      translate(45,-55);
-      //rotate(t);
-      manoIzq.Draw();
+      translate(63,-65);
+      rotate(radians(20*cos(2*PI*t)));
+      brazoIzq.Draw();
+      pushMatrix();
+        translate(45,-55);
+        rotate(radians(60*sin(2*PI*t)-50));
+        manoIzq.Draw();
+      popMatrix();
     popMatrix();
+    
+    pushMatrix();
+      translate(0,-65);
+      cabeza.Draw();
+    popMatrix();
+    
   popMatrix();
+  
+  
 }
