@@ -1,10 +1,10 @@
 Grabable obj;
+ArrayList<Grabable> nodes;
 
 void setup () {
   size (512, 512);
   obj = new Grabable ();
 }
-
 
 void draw () {
   background(230);
@@ -22,9 +22,9 @@ void mousePressed() {
 }
 
 void mouseDragged() {
-  println("El ratón está presionado");
+  
 }
 
 void mouseReleased() { 
-  println("El ratón liberado");
+  obj.Release();
 }
