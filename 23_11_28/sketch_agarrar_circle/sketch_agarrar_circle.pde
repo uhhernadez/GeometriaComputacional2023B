@@ -1,15 +1,19 @@
-Grabable obj;
 ArrayList<Grabable> nodes;
 
 void setup () {
   size (512, 512);
-  obj = new Grabable ();
+  nodes = new ArrayList<Grabable>();
+  for (int k = 0; k < 5 ; k++) {
+    nodes.add(new Grabable());
+  } 
 }
 
 void draw () {
   background(230);
   translate (width / 2.0, height / 2.0);
-  obj.Draw();
+  for (Grabable g : nodes) {
+    g.Draw();
+  }
 }
 
 void DrawLine (PVector c, PVector p) {
@@ -18,7 +22,26 @@ void DrawLine (PVector c, PVector p) {
 }
 
 void mousePressed() {
-  obj.Grab();
+  // Si hay algún objecto agarra, no agarrar nada
+  for (Grabable g: nodes) {
+    if (g.estado == "agarrado") {
+      return;
+    }
+  }
+  // Si agarro un objecto, termino mi búsqueda
+  /*
+  for (Grabable g : nodes) {
+    if(g.Grab()){
+      return;
+    }
+  }*/
+  for (int k = nodes.size()-1; k >=0; k--) {
+    Grabable g = nodes.get(k);
+    if(g.Grab()){
+      return;
+    }
+  }
+  
 }
 
 void mouseDragged() {
@@ -26,5 +49,7 @@ void mouseDragged() {
 }
 
 void mouseReleased() { 
-  obj.Release();
+  for (Grabable g : nodes) {
+    g.Release();
+  }
 }
